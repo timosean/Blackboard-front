@@ -1,4 +1,6 @@
 import Image from "next/image";
+import React from "react";
+import LoginForm from "./components";
 
 export default function Home() {
   return (
@@ -12,28 +14,7 @@ export default function Home() {
             BlackBoard에 로그인하세요
           </h3>
           <p className="text-lg md:text-2xl text-white">학습관리시스템</p>
-          <form method="post" className="mt-8 w-full h-[12.5rem] flex flex-col">
-            <input
-              type="text"
-              name="id"
-              placeholder="아이디를 입력하세요"
-              className="w-full h-8 md:h-12 md:h-[2.215rem] rounded px-3 text-sm md:text-lg mb-3"
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="비밀번호를 입력하세요"
-              className="w-full h-8 md:h-12 md:h-[2.215rem] rounded px-3 text-sm md:text-lg mb-6"
-            />
-            <div className="flex justify-start items-center space-x-3">
-              <button className="w-[5.75rem] h-[2rem] md:h-[2.5rem] text-white rounded bg-dark-gray text-sm md:text-base font-bold">
-                로그인
-              </button>
-              <button className="w-[5.75rem] h-[2rem] md:h-[2.5rem] text-white rounded bg-dark-gray text-sm md:text-base font-bold">
-                회원가입
-              </button>
-            </div>
-          </form>
+          <LoginForm />
         </div>
       </div>
     </main>
