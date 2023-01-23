@@ -3,7 +3,7 @@ import LoginForm from "./components";
 
 export default function LoginPage() {
   return (
-    <div>
+    <div className="w-full">
       <h3 className="text-2xl md:text-4xl md:mb-2 font-semibold text-white">
         BlackBoard에 로그인하세요
       </h3>
