@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import LoginForm from "./components";
+import LoginForm from "./auth/components";
 
 export default function Home() {
   return (

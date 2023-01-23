@@ -28,13 +28,13 @@ const LoginForm = () => {
       <input
         type="text"
         placeholder="아이디를 입력하세요"
-        className="w-full h-8 md:h-12 md:h-[2.215rem] rounded px-3 text-sm md:text-lg mb-3"
+        className="w-full h-8 md:h-12 rounded px-3 text-sm md:text-lg mb-3"
         {...register("id")}
       />
       <input
         type="password"
         placeholder="비밀번호를 입력하세요"
-        className="w-full h-8 md:h-12 md:h-[2.215rem] rounded px-3 text-sm md:text-lg mb-6"
+        className="w-full h-8 md:h-12 rounded px-3 text-sm md:text-lg mb-6"
         {...register("password")}
       />
       <div className="flex justify-start items-center space-x-3">
