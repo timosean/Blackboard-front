@@ -1,17 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import Link from "next/link";
 
-interface FormData {
+interface FormValues {
   id: string;
   password: string;
 }
 
 const LoginForm = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const { register, handleSubmit } = useForm<FormValues>();
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
   };
 
@@ -41,7 +42,7 @@ const LoginForm = () => {
           className="w-[5.75rem] h-[2rem] md:h-[2.5rem] text-white rounded bg-dark-gray text-sm md:text-base font-bold"
           type="submit"
         >
-          회원가입
+          <Link href={"/auth/signup"}>회원가입</Link>
         </button>
       </div>
     </form>
