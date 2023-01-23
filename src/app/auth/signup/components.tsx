@@ -15,7 +15,7 @@ interface FormValues {
 }
 
 export default function SignUpForm() {
-  const { register, handleSubmit } = useForm<FormValues>();
+  const { register, handleSubmit, setValue } = useForm<FormValues>();
   const [job, setJob] = useState<string>("student");
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
@@ -34,7 +34,10 @@ export default function SignUpForm() {
           className={`w-1/2 p-3 text-center text-white rounded transition-all ${
             job === "student" ? "bg-[#470111]" : "bg-transparent"
           }`}
-          onClick={() => setJob("student")}
+          onClick={() => {
+            setJob("student");
+            setValue("job", "student");
+          }}
         >
           학생 회원가입
         </button>
@@ -43,7 +46,10 @@ export default function SignUpForm() {
           className={`w-1/2 p-3 text-center text-white rounded transition-all ${
             job === "student" ? "bg-transparent" : "bg-[#470111]"
           }`}
-          onClick={() => setJob("professor")}
+          onClick={() => {
+            setJob("professor");
+            setValue("job", "professor");
+          }}
         >
           교수 회원가입
         </button>
@@ -93,7 +99,7 @@ export default function SignUpForm() {
         />
       </div>
       <div className="hidden">
-        <input type="hidden" value={job} {...register("job")} />
+        <input type="hidden" {...register("job")} />
       </div>
       <button
         className="w-full p-3 text-white rounded bg-dark-gray text-sm md:text-base font-bold"
