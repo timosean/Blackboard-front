@@ -31,7 +31,7 @@ export default function SignUpForm() {
       <div className="w-full flex mb-8">
         <button
           type="button"
-          className={`w-1/2 p-3 text-center text-white rounded transition-all ${
+          className={`w-1/2 p-3 text-center text-white rounded transition-all lg:text-lg font-bold ${
             job === "student" ? "bg-[#470111]" : "bg-transparent"
           }`}
           onClick={() => {
@@ -43,7 +43,7 @@ export default function SignUpForm() {
         </button>
         <button
           type="button"
-          className={`w-1/2 p-3 text-center text-white rounded transition-all ${
+          className={`w-1/2 p-3 text-center text-white rounded transition-all lg:text-lg font-bold ${
             job === "student" ? "bg-transparent" : "bg-[#470111]"
           }`}
           onClick={() => {
