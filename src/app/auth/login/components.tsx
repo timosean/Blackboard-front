@@ -38,12 +38,14 @@ const LoginForm = () => {
         <button className="w-[5.75rem] h-[2rem] md:h-[2.5rem] text-white rounded bg-dark-gray text-sm md:text-base font-bold">
           로그인
         </button>
-        <button
-          className="w-[5.75rem] h-[2rem] md:h-[2.5rem] text-white rounded bg-dark-gray text-sm md:text-base font-bold"
-          type="submit"
-        >
-          <Link href={"/auth/signup"}>회원가입</Link>
-        </button>
+        <Link href={"/auth/signup"}>
+          <button
+            className="w-[5.75rem] h-[2rem] md:h-[2.5rem] text-white rounded bg-dark-gray text-sm md:text-base font-bold"
+            type="submit"
+          >
+            회원가입
+          </button>
+        </Link>
       </div>
     </form>
   );
