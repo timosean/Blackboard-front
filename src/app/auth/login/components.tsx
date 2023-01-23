@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 interface FormData {
   id: string;
@@ -10,10 +10,6 @@ interface FormData {
 
 const LoginForm = () => {
   const { register, handleSubmit } = useForm<FormData>();
-  const [inputs, setInputs] = useState({
-    id: "",
-    password: "",
-  });
 
   const onSubmit = (data: FormData) => {
     console.log(data);
