@@ -1,25 +1,30 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IoPersonOutline, IoLockClosedOutline } from "react-icons/io5";
 import { HiOutlineIdentification } from "react-icons/hi";
 import { BsPersonCheck } from "react-icons/bs";
+import { signUpAPI } from "@/apis/api/user";
 
 export interface FormValues {
-  name: string;
-  id: string;
+  userName: string;
+  userID: string;
   password: string;
   idNum: string;
-  job: string;
+  userJob: string;
 }
 
 export default function SignUpForm() {
   const { register, handleSubmit, setValue } = useForm<FormValues>();
   const [job, setJob] = useState<string>("student");
 
+  useEffect(() => {
+    setValue("userJob", "student");
+  }, []);
+
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
+    signUpAPI(data);
   };
 
   return (
@@ -36,7 +41,7 @@ export default function SignUpForm() {
           }`}
           onClick={() => {
             setJob("student");
-            setValue("job", "student");
+            setValue("userJob", "student");
           }}
         >
           학생 회원가입
@@ -48,7 +53,7 @@ export default function SignUpForm() {
           }`}
           onClick={() => {
             setJob("professor");
-            setValue("job", "professor");
+            setValue("userJob", "professor");
           }}
         >
           교수 회원가입
@@ -62,7 +67,7 @@ export default function SignUpForm() {
           type="text"
           placeholder="이름을 입력하세요"
           className="w-full h-8 md:h-12 pl-10 pr-3 text-sm md:text-lg mb-3 bg-transparent outline-none border-b border-b-white text-white placeholder:text-white/70"
-          {...register("name", { required: true })}
+          {...register("userName", { required: true })}
         />
       </div>
       <div className="relative w-full">
@@ -73,7 +78,7 @@ export default function SignUpForm() {
           type="text"
           placeholder="아이디를 입력하세요"
           className="w-full h-8 md:h-12 pl-10 pr-3 text-sm md:text-lg mb-3 bg-transparent outline-none border-b border-b-white text-white placeholder:text-white/70"
-          {...register("id", { required: true })}
+          {...register("userID", { required: true })}
         />
       </div>
       <div className="relative w-full">
@@ -99,7 +104,7 @@ export default function SignUpForm() {
         />
       </div>
       <div className="hidden">
-        <input type="hidden" {...register("job")} />
+        <input type="hidden" {...register("userJob")} />
       </div>
       <button
         className="w-full p-3 text-white rounded bg-dark-gray text-sm md:text-base font-bold"
