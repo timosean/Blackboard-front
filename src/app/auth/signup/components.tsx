@@ -6,7 +6,7 @@ import { IoPersonOutline, IoLockClosedOutline } from "react-icons/io5";
 import { HiOutlineIdentification } from "react-icons/hi";
 import { BsPersonCheck } from "react-icons/bs";
 
-interface FormValues {
+export interface FormValues {
   name: string;
   id: string;
   password: string;
