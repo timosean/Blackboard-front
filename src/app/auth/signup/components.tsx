@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IoPersonOutline, IoLockClosedOutline } from "react-icons/io5";
 import { HiOutlineIdentification } from "react-icons/hi";
@@ -18,13 +19,18 @@ export interface FormValues {
 export default function SignUpForm() {
   const { register, handleSubmit, setValue } = useForm<FormValues>();
   const [job, setJob] = useState<string>("student");
+  const router = useRouter();
 
   useEffect(() => {
     setValue("userJob", "student");
   }, []);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    signUpAPI(data);
+    signUpAPI(data)
+      .then((res) =>
+        alert("회원가입이 완료되었습니다!\n로그인 페이지로 이동합니다.")
+      )
+      .then(() => router.push("/auth/login"));
   };
 
   return (
