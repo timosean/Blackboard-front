@@ -3,17 +3,24 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Link from "next/link";
+import axiosInstance from "@/apis/utils";
 
 interface FormValues {
-  id: string;
+  userID: string;
   password: string;
 }
 
 const LoginForm = () => {
   const { register, handleSubmit } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    try {
+      const user = await axiosInstance.post("/user/login", data);
+      if (user) window.location.href = "http://localhost:3000/";
+    } catch (e) {
+      if (e.response.status === 401) alert("계정 정보를 다시 확인해주세요.");
+      console.error(e);
+    }
   };
 
   return (
@@ -26,7 +33,7 @@ const LoginForm = () => {
         type="text"
         placeholder="아이디를 입력하세요"
         className="w-full h-8 md:h-12 rounded px-3 text-sm md:text-lg mb-3"
-        {...register("id")}
+        {...register("userID")}
       />
       <input
         type="password"
