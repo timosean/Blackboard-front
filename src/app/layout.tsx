@@ -1,18 +1,22 @@
 import "./globals.css";
+import reducer from "@/reducers/user";
+import { Provider } from "react-redux";
+import withRedux from "next-redux-wrapper";
+import store from "@/store/configureStore";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en">
-      {/*
+    <Provider store={store}>
+      <html lang="en">
+        {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <head />
-      <body>{children}</body>
-    </html>
+        <head />
+        <body>{children}</body>
+      </html>
+    </Provider>
   );
-}
+};
+
+export default RootLayout;
