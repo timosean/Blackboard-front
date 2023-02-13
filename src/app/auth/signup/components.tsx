@@ -7,17 +7,10 @@ import { IoPersonOutline, IoLockClosedOutline } from "react-icons/io5";
 import { HiOutlineIdentification } from "react-icons/hi";
 import { BsPersonCheck } from "react-icons/bs";
 import { signUpAPI } from "@/apis/api/user";
-
-export interface FormValues {
-  userName: string;
-  userID: string;
-  password: string;
-  idNum: string;
-  userJob: string;
-}
+import { User } from "../../../interfaces/user";
 
 export default function SignUpForm() {
-  const { register, handleSubmit, setValue } = useForm<FormValues>();
+  const { register, handleSubmit, setValue } = useForm<User>();
   const [job, setJob] = useState<string>("student");
   const router = useRouter();
 
@@ -25,7 +18,7 @@ export default function SignUpForm() {
     setValue("userJob", "student");
   }, []);
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<User> = (data) => {
     signUpAPI(data)
       .then((res) =>
         alert("회원가입이 완료되었습니다!\n로그인 페이지로 이동합니다.")
