@@ -1,8 +1,8 @@
 import axiosInstance from "../utils";
-import { FormValues } from "@/app/auth/signup/components";
+import { User } from "@/interfaces/user";
 
 // 회원가입 API
-export const signUpAPI = async (signUpData: FormValues) => {
+export const signUpAPI = async (signUpData: User) => {
   try {
     const res = await axiosInstance.post("/user", signUpData);
     return res;
