@@ -10,3 +10,13 @@ export const signUpAPI = async (signUpData: User) => {
     console.error(e);
   }
 };
+
+// 내 정보 가져오기
+export const fetchMyInfo = async () => {
+  try {
+    const res = await axiosInstance.get("/user");
+    return res;
+  } catch (e) {
+    console.error(e);
+  }
+};
