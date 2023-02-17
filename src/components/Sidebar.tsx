@@ -3,6 +3,7 @@ import { ImBook } from "react-icons/im";
 import { BiLogOutCircle } from "react-icons/bi";
 import { GoTasklist } from "react-icons/go";
 import { RxPerson } from "react-icons/rx";
+import Link from "next/link";
 
 function MenuItemWrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -20,7 +21,9 @@ export default function Sidebar() {
       </div>
       <MenuItemWrapper>
         <RxPerson size={30} />
-        <span className="text-sm">내 정보</span>
+        <span className="text-sm">
+          <Link href="/main/mypage">내 정보</Link>
+        </span>
       </MenuItemWrapper>
       <MenuItemWrapper>
         <AiOutlineGlobal size={30} />
