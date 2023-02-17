@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchMyInfo } from "@/apis/api/user";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
+import { FadeLoader } from "react-spinners";
 
 export default function Home() {
   const router = useRouter();
@@ -16,14 +16,21 @@ export default function Home() {
     queryFn: fetchMyInfo,
   });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   if (data) {
     queryClient.setQueryData(["user"], data);
     router.push("/main");
-  }
+  } else router.push("/auth/login");
 
-  return <main className="w-full flex">홈페이지</main>;
+  return (
+    <main className="w-screen h-screen">
+      <div className="w-full h-full flex items-center justify-center">
+        <FadeLoader
+          radius={5}
+          loading={true}
+          color={"rgba(0, 0, 0, 0.8"}
+          speedMultiplier={4}
+        />
+      </div>
+    </main>
+  );
 }
