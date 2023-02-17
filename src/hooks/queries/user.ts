@@ -8,7 +8,7 @@ import { User } from "@/interfaces/user";
 import { AxiosError, AxiosResponse } from "axios";
 
 export const useFetchMyInfo = (
-  options: UseQueryOptions<
+  options?: UseQueryOptions<
     AxiosResponse<User>,
     AxiosError,
     AxiosResponse<User>,
