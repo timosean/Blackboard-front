@@ -20,23 +20,23 @@ export default function Sidebar() {
       </div>
       <MenuItemWrapper>
         <RxPerson size={30} />
-        <span>내 정보</span>
+        <span className="text-sm">내 정보</span>
       </MenuItemWrapper>
       <MenuItemWrapper>
         <AiOutlineGlobal size={30} />
-        <span>활동 스트림</span>
+        <span className="text-sm">활동 스트림</span>
       </MenuItemWrapper>
       <MenuItemWrapper>
         <ImBook size={28} />
-        <span>코스</span>
+        <span className="text-sm">코스</span>
       </MenuItemWrapper>
       <MenuItemWrapper>
         <GoTasklist size={28} />
-        <span>수강신청</span>
+        <span className="text-sm">수강신청</span>
       </MenuItemWrapper>
       <MenuItemWrapper>
         <BiLogOutCircle size={30} />
-        <span>로그아웃</span>
+        <span className="text-sm">로그아웃</span>
       </MenuItemWrapper>
     </nav>
   );
