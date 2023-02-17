@@ -19,12 +19,12 @@ export default function Sidebar() {
       <div className="w-full h-[105px] flex items-center justify-center text-white text-2xl font-bold border-b-4 border-dark-gray">
         학습관리시스템
       </div>
-      <MenuItemWrapper>
-        <RxPerson size={30} />
-        <span className="text-sm">
-          <Link href="/main/mypage">내 정보</Link>
-        </span>
-      </MenuItemWrapper>
+      <Link className="w-full" href="/main/mypage">
+        <MenuItemWrapper>
+          <RxPerson size={30} />
+          <span className="text-sm">내 정보</span>
+        </MenuItemWrapper>
+      </Link>
       <MenuItemWrapper>
         <AiOutlineGlobal size={30} />
         <span className="text-sm">활동 스트림</span>
