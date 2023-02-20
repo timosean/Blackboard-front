@@ -12,3 +12,13 @@ export const fetchMyInfo = async () => {
   const res = await axiosInstance.get("/user");
   return res.data;
 };
+
+// 로그아웃
+export const logOutAPI = async () => {
+  await axiosInstance.post("/user/logout").then((res) => {
+    if (res.status === 200) {
+      alert("로그아웃 되었습니다.");
+      window.location.href = "http://localhost:3000/";
+    }
+  });
+};
