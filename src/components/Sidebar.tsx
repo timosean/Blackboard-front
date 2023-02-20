@@ -1,13 +1,26 @@
+"use client";
+
 import { AiOutlineGlobal } from "react-icons/ai";
 import { ImBook } from "react-icons/im";
 import { BiLogOutCircle } from "react-icons/bi";
 import { GoTasklist } from "react-icons/go";
 import { RxPerson } from "react-icons/rx";
+import { logOutAPI } from "@/apis/api/user";
 import Link from "next/link";
+import React from "react";
 
-function MenuItemWrapper({ children }: { children: React.ReactNode }) {
+function MenuItemWrapper({
+  children,
+  onClick,
+}: {
+  children: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+}) {
   return (
-    <div className="w-full h-12 pl-3 flex items-center text-white space-x-3 hover:bg-hover-crimson hover:cursor-pointer">
+    <div
+      className="w-full h-12 pl-3 flex items-center text-white space-x-3 hover:bg-hover-crimson hover:cursor-pointer"
+      onClick={onClick}
+    >
       {children}
     </div>
   );
@@ -37,7 +50,7 @@ export default function Sidebar() {
         <GoTasklist size={28} />
         <span className="text-sm">수강신청</span>
       </MenuItemWrapper>
-      <MenuItemWrapper>
+      <MenuItemWrapper onClick={logOutAPI}>
         <BiLogOutCircle size={30} />
         <span className="text-sm">로그아웃</span>
       </MenuItemWrapper>
