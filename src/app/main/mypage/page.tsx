@@ -1,12 +1,9 @@
 "use client";
 
-import { useQueryClient } from "@tanstack/react-query";
+import { useFetchMyInfo } from "@/hooks/queries/user";
 
 export default function MyPage() {
-  const queryClient = useQueryClient();
-  const data = queryClient.getQueryData(["user"]);
+  const { data } = useFetchMyInfo();
 
-  console.log(data);
-
-  return <div>{JSON.stringify(data)}</div>;
+  return <div className="w-full h-[107px] bg-pink">{JSON.stringify(data)}</div>;
 }
