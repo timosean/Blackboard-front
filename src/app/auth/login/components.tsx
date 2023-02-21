@@ -15,8 +15,9 @@ const LoginForm = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
-      const user = await axiosInstance.post("/user/login", data);
-      if (user) window.location.href = "http://localhost:3000/main";
+      const response = await axiosInstance.post("/user/login", data);
+      sessionStorage.setItem("user", JSON.stringify(response.data));
+      if (response) window.location.href = "http://localhost:3000/main";
     } catch (e) {
       if (e.response.status === 401) alert("계정 정보를 다시 확인해주세요.");
       console.error(e);

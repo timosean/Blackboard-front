@@ -18,6 +18,7 @@ export const logOutAPI = async () => {
   await axiosInstance.post("/user/logout").then((res) => {
     if (res.status === 200) {
       alert("로그아웃 되었습니다.");
+      sessionStorage.removeItem("user");
       window.location.href = "http://localhost:3000/";
     }
   });

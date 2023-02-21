@@ -1,3 +1,5 @@
+"use client";
+
 import {
   useQuery,
   UseQueryOptions,
@@ -6,6 +8,8 @@ import {
 import { fetchMyInfo } from "@/apis/api/user";
 import { User } from "@/interfaces/user";
 import { AxiosError, AxiosResponse } from "axios";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export const useFetchMyInfo = (
   options?: UseQueryOptions<
@@ -15,4 +19,23 @@ export const useFetchMyInfo = (
     ["user"]
   >
 ): UseQueryResult<AxiosResponse, AxiosError> =>
-  useQuery(["user"], () => fetchMyInfo(), options);
+  useQuery(["user"], () => fetchMyInfo(), {
+    ...options,
+    staleTime: 300000,
+  });
+
+export const useCheckLoginStatus = () => {
+  const [user, setUser] = useState<User>();
+  const router = useRouter();
+
+  useEffect(() => {
+    const data = sessionStorage.getItem("user");
+    if (data) setUser(JSON.parse(data));
+    else {
+      alert("로그인이 필요한 서비스입니다.");
+      router.push("/auth/login");
+    }
+  }, []);
+
+  return user;
+};
