@@ -10,17 +10,24 @@ import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import { usePathname } from "next/navigation";
 
 function MenuItemWrapper({
   children,
   onClick,
+  href,
 }: {
   children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLDivElement>;
+  href?: string;
 }) {
+  const pathname = usePathname();
+  const isActive = pathname === href;
   return (
     <div
-      className="w-full h-12 pl-3 flex items-center text-white space-x-3 hover:bg-hover-crimson hover:cursor-pointer"
+      className={`w-full h-12 pl-3 flex items-center text-white space-x-3 ${
+        isActive ? "border-l-4 border-white bg-hover-crimson" : ""
+      } hover:bg-hover-crimson hover:cursor-pointer transition-[background]`}
       onClick={onClick}
     >
       {children}
@@ -41,23 +48,29 @@ export default function Sidebar() {
         학습관리시스템
       </div>
       <Link className="w-full" href="/main/mypage">
-        <MenuItemWrapper>
+        <MenuItemWrapper href="/main/mypage">
           <RxPerson size={30} />
           <span className="text-sm">내 정보</span>
         </MenuItemWrapper>
       </Link>
-      <MenuItemWrapper>
-        <AiOutlineGlobal size={30} />
-        <span className="text-sm">활동 스트림</span>
-      </MenuItemWrapper>
-      <MenuItemWrapper>
-        <ImBook size={28} />
-        <span className="text-sm">코스</span>
-      </MenuItemWrapper>
-      <MenuItemWrapper>
-        <GoTasklist size={28} />
-        <span className="text-sm">수강신청</span>
-      </MenuItemWrapper>
+      <Link className="w-full" href="/main">
+        <MenuItemWrapper href="/main">
+          <AiOutlineGlobal size={30} />
+          <span className="text-sm">활동 스트림</span>
+        </MenuItemWrapper>
+      </Link>
+      <Link className="w-full" href="/main/course">
+        <MenuItemWrapper href="/main/course">
+          <ImBook size={28} />
+          <span className="text-sm">코스</span>
+        </MenuItemWrapper>
+      </Link>
+      <Link className="w-full" href="/main/sugang">
+        <MenuItemWrapper href="/main/sugang">
+          <GoTasklist size={28} />
+          <span className="text-sm">수강신청</span>
+        </MenuItemWrapper>
+      </Link>
       <MenuItemWrapper onClick={logOutAPI}>
         <BiLogOutCircle size={30} />
         <span className="text-sm">로그아웃</span>
