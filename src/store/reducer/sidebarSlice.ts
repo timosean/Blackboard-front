@@ -8,15 +8,15 @@ export const sidebarSlice = createSlice({
   name: "sidebar",
   initialState,
   reducers: {
-    open: (state, action) => {
-      state = action.payload;
+    open: (state) => {
+      state.isOpen = true;
     },
-    close: (state, action) => {
-      state = action.payload;
+    close: (state) => {
+      state.isOpen = false;
     },
   },
 });
 
 export const sidebar = sidebarSlice.name;
 export const sidebarReducer = sidebarSlice.reducer;
-export const sidebarAction = sidebarSlice.actions;
+export const { open, close } = sidebarSlice.actions;

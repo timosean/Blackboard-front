@@ -8,6 +8,8 @@ import { RxPerson } from "react-icons/rx";
 import { logOutAPI } from "@/apis/api/user";
 import Link from "next/link";
 import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 function MenuItemWrapper({
   children,
@@ -27,9 +29,15 @@ function MenuItemWrapper({
 }
 
 export default function Sidebar() {
+  const { isOpen } = useSelector((state: RootState) => state.sidebar);
+
   return (
-    <nav className="w-[12.5rem] h-screen bg-ku-crimson flex flex-col items-start space-y-1">
-      <div className="w-full h-[105px] flex items-center justify-center text-white text-2xl font-bold border-b-4 border-dark-gray">
+    <nav
+      className={`w-[12.5rem] h-screen bg-ku-crimson flex flex-col items-start space-y-1 absolute ${
+        isOpen ? "left-0" : "-left-[12.5rem]"
+      } lg:static transition-all ease-[cubic-bezier(0.55, 0, 0.1, 1)] duration-500`}
+    >
+      <div className="w-full h-[105px] flex items-center justify-center text-white text-xl font-bold border-b-4 border-dark-gray">
         학습관리시스템
       </div>
       <Link className="w-full" href="/main/mypage">
