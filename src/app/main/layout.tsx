@@ -11,7 +11,7 @@ export default function MenuList({ children }: { children: React.ReactNode }) {
   const dispatch = useDispatch<AppDispatch>();
 
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-full h-screen relative lg:static lg:flex">
       <Sidebar />
       <div
         className={`w-full h-screen flex absolute lg:static transition-all ease-[cubic-bezier(0.55, 0, 0.1, 1)] duration-500 ${
