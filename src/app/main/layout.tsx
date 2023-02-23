@@ -20,7 +20,7 @@ export default function MenuList({ children }: { children: React.ReactNode }) {
       >
         <Header />
         <main
-          className="w-full h-screen absolute top-[3.5rem] lg:static"
+          className="w-full h-screen absolute top-[3.5rem] lg:static px-6"
           onClick={() => dispatch(close())}
         >
           {children}
