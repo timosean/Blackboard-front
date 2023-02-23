@@ -11,6 +11,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+// 로그인 되어있는 사용자의 정보를 가져오는 훅
 export const useFetchMyInfo = (
   options?: UseQueryOptions<
     AxiosResponse<User>,
@@ -24,6 +25,7 @@ export const useFetchMyInfo = (
     staleTime: 300000,
   });
 
+// 리로드 시 로그인 유지되게 하는 훅
 export const useCheckLoginStatus = () => {
   const [user, setUser] = useState<User>();
   const router = useRouter();
