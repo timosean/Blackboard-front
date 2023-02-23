@@ -9,7 +9,5 @@ export default function Main() {
     onSuccess: (data) => queryClient.setQueryData(["user"], data),
   });
 
-  console.log(data);
-
   return <div>Main Page</div>;
 }

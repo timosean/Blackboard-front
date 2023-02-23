@@ -2,7 +2,6 @@
 
 import { useCheckLoginStatus } from "@/hooks/queries/user";
 
-// 서버에서 데이터 받아오는 동안 비동기 처리 필요.
 export default function MyPage() {
   const user = useCheckLoginStatus();
 
