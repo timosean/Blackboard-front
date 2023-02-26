@@ -9,10 +9,14 @@ export const SugangLecture = ({
   professor: string;
 }) => {
   return (
-    <div className="w-full h-20 border-l-8 border-l-ku-crimson border bg-white rounded drop-shadow-lg flex items-center px-6 space-x-3">
-      <h1 className="font-bold text-lg">{name}</h1>
-      <h2>{professor}</h2>
-      <button>신청</button>
+    <div className="w-[22rem] h-20 flex items-center px-6 justify-between border-l-8 border-l-ku-crimson border bg-white rounded drop-shadow-lg">
+      <div className="w-full h-full flex items-center space-x-6">
+        <h1 className="font-bold text-2xl flex items-center">{name}</h1>
+        <h2 className="text-dark-gray font-semibold text-lg">{professor}</h2>
+      </div>
+      <button className="w-16 py-4 h-6 flex items-center justify-center rounded bg-ku-crimson text-white font-bold">
+        신청
+      </button>
     </div>
   );
 };
