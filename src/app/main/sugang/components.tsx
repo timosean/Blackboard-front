@@ -5,8 +5,8 @@ export const SugangLecture = ({
   name,
   professor,
 }: {
-  name: string;
-  professor: string;
+  name?: string;
+  professor?: string;
 }) => {
   return (
     <div className="w-[22rem] h-14 lg:h-20 flex items-center px-6 justify-between border-l-8 border-l-ku-crimson border bg-white rounded drop-shadow-lg">
