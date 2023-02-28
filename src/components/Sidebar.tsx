@@ -11,6 +11,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { usePathname } from "next/navigation";
+import { useCheckLoginStatus } from "@/hooks/queries/user";
 
 function MenuItemWrapper({
   children,
@@ -37,6 +38,7 @@ function MenuItemWrapper({
 
 export default function Sidebar() {
   const { isOpen } = useSelector((state: RootState) => state.sidebar);
+  const user = useCheckLoginStatus();
 
   return (
     <nav
@@ -65,7 +67,10 @@ export default function Sidebar() {
           <span className="text-sm">코스</span>
         </MenuItemWrapper>
       </Link>
-      <Link className="w-full" href="/main/sugang">
+      <Link
+        className={`w-full ${user?.userJob === "professor" ? "hidden" : ""}`}
+        href="/main/sugang"
+      >
         <MenuItemWrapper href="/main/sugang">
           <GoTasklist size={28} />
           <span className="text-sm">수강신청</span>
